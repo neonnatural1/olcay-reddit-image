@@ -8,15 +8,20 @@ st.write(
     "Enter the subreddit name and get it's most trending image."
 )
 
-# Load environment variables
-load_dotenv()
+CLIENT_ID = st.secrets["CLIENT_ID"]
+CLIENT_SECRET = st.secrets["CLIENT_SECRET"]
+REDDIT_USERNAME = st.secrets["REDDIT_USERNAME"]
+REDDIT_PASSWORD = st.secrets["REDDIT_PASSWORD"]
+USER_AGENT = st.secrets["USER_AGENT"]
 
+# Use credentials
+import praw
 reddit = praw.Reddit(
-    client_id=os.getenv("CLIENT_ID"),
-    client_secret=os.getenv("CLIENT_SECRET"),
-    user_agent=os.getenv("USER_AGENT"),
-    username=os.getenv("REDDIT_USERNAME"),
-    password=os.getenv("REDDIT_PASSWORD"),
+    client_id=CLIENT_ID,
+    client_secret=CLIENT_SECRET,
+    user_agent=USER_AGENT,
+    username=REDDIT_USERNAME,
+    password=REDDIT_PASSWORD
 )
 
 # Function to find the first trending post with an image
